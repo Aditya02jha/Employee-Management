@@ -1,9 +1,10 @@
 package com.employee.management.entity;
 
-import com.employee.management.repo.AddressRepo;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,10 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "employees")
-public class Employee {
+public class Employee implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 27L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

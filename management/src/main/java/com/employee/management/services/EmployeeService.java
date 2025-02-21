@@ -4,19 +4,30 @@ import com.employee.management.entity.Address;
 import com.employee.management.entity.Employee;
 import com.employee.management.repo.EmployeeRepo;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 @AllArgsConstructor
 @Service
 public class EmployeeService {
 
     private EmployeeRepo employeeRepo;
-
-    public Optional<Employee> getbyId(Long id) {
-        return employeeRepo.findById(id);
+    @Autowired
+    private RedisTemplate<String,Employee> employeeRedisTemplate;
+    public Employee getbyId(Long id) {
+        //check is cache
+        String key = "product:"+id;
+        Employee employee = (Employee) employeeRedisTemplate.opsForValue().get(key);
+        if(employee == null){
+            employee = employeeRepo.findById(id).get();
+            employeeRedisTemplate.opsForValue().set(key,employee,5, TimeUnit.MINUTES);
+        }
+        return (employee);
     }
 
     public boolean updateEmp(Long id, Employee employee) {
@@ -38,6 +49,7 @@ public class EmployeeService {
     }
 
     public void deleteEmployeeById(Long id) throws RuntimeException {
+
         if (employeeRepo.existsById(id)) {
             employeeRepo.deleteById(id);
         } else {
