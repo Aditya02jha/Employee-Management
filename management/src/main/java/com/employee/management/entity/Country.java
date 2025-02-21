@@ -1,5 +1,7 @@
 package com.employee.management.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,5 +24,6 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
     private List<Employee> employeeList = new ArrayList<>();
 }

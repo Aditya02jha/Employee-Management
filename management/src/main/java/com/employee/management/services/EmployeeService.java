@@ -21,13 +21,12 @@ public class EmployeeService {
     private RedisTemplate<String,Employee> employeeRedisTemplate;
     public Employee getbyId(Long id) {
         //check is cache
-        String key = "product:"+id;
-        Employee employee = (Employee) employeeRedisTemplate.opsForValue().get(key);
-        if(employee == null){
-            employee = employeeRepo.findById(id).get();
-            employeeRedisTemplate.opsForValue().set(key,employee,5, TimeUnit.MINUTES);
-        }
-        return (employee);
+//        String key = "product:"+id;
+//        Employee employee = (Employee) employeeRedisTemplate.opsForValue().get(key);
+//        if(employee == null){
+        //            employeeRedisTemplate.opsForValue().set(key,employee,5, TimeUnit.MINUTES);
+//        }
+        return (employeeRepo.findById(id).get());
     }
 
     public boolean updateEmp(Long id, Employee employee) {

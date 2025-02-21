@@ -1,10 +1,12 @@
 package com.employee.management.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.type.NumericBooleanConverter;
 
 @Setter
 @Getter
@@ -21,15 +23,20 @@ public class Address {
     private String addressLine;
     private String city;
     private String state;
-    private String country;
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
+
+    @Column(name = "zip_code", length = 20,nullable = false)
     private String zipCode;
 
-    @Column(name = "is_current", nullable = false)
-    private Boolean isCurrent = false;
+    @Column(name = "is_current", nullable = false, columnDefinition = "TINYINT(1)")
+    private Boolean isCurrent;
 
     // Many addresses can belong to one employee
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
+    @JsonBackReference
     private Employee employee;
 
 }

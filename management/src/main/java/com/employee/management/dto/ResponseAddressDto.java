@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressDto {
+public class ResponseAddressDto {
     private String addressLine;
     private String city;
     private String state;
-    private Long countryId;
+    private String country;
     private String zipCode;
     private Boolean isCurrent;
 }

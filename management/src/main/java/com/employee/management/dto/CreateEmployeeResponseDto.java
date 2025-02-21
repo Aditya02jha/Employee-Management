@@ -20,5 +20,5 @@ public class CreateEmployeeResponseDto {
     private String managerName;
     private String countryName;
     private List<String> departmentNames;
-    private List<AddressDto> addresses;
+    private List<ResponseAddressDto> addresses;
 }

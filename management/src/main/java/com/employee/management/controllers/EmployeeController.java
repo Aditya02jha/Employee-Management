@@ -24,15 +24,6 @@ public class EmployeeController {
     private EmployeeService employeeService;
     private AddressService addressService;
 
-    @GetMapping("/hello")
-    public String getHello(){
-        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "Hello "+user.getUsername()+" user from"+Thread.currentThread().getName();
-    }
-//    public String getHello(@AuthenticationPrincipal UserDetails userDetails){
-//        return "Helllo %s user from%s".formatted(userDetails .getUsername(), Thread.currentThread().getName());
-//    }
-
     @PutMapping("/{id}")
     public ResponseEntity<Boolean> updateEmp(@PathVariable Long id , @RequestBody Employee employee){
         Boolean is_updated = employeeService.updateEmp(id , employee);
@@ -49,17 +40,6 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>> getAllEmpList(){
         List<Employee> employeeList = employeeService.getAllEmp();
         return ResponseEntity.ok(employeeList);
-    }
-
-
-    @PostMapping("/")
-    public String insertEmployee(@RequestBody Employee employee){
-        try {
-            employeeService.insertEmployee(employee, employee.getAddressList());
-            return ("Employee Added Successfully!");
-        }catch (RuntimeException e){
-            return e.getMessage();
-        }
     }
 
     @DeleteMapping("/{id}")

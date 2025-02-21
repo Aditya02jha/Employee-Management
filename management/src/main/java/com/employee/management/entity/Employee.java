@@ -1,5 +1,8 @@
 package com.employee.management.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +34,7 @@ public class Employee implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "manager_id", nullable = true)
+    @JsonBackReference
     private Employee manager;
 
     @ManyToOne
@@ -39,15 +43,19 @@ public class Employee implements Serializable {
     // One employee can have many addresses
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Address> addressList = new ArrayList<>();
 
     @OneToMany(mappedBy = "manager")
+    @JsonManagedReference
     private List<Employee> subordinates = new ArrayList<>();
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
     private List<ManagerHistory> managerHistoryList = new ArrayList<>();
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
     private List<EmployeeDepartment> employeeDepartmentList = new ArrayList<>();
 
     public void addAddress(Address address){

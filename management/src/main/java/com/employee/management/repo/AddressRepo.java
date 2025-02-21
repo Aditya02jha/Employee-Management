@@ -1,6 +1,7 @@
 package com.employee.management.repo;
 
 import com.employee.management.entity.Address;
+import com.employee.management.entity.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +20,7 @@ public interface AddressRepo extends JpaRepository<Address, Long> {
             "SET address_line = :addressLine, " +  // Column names should match DB column names
             "city = :city, " +
             "state = :state, " +
-            "country = :country, " +
+            "country_id = :country, " +
             "zip_code = :zipCode, " +
             "is_current = TRUE " +
             "WHERE employee_id = :employee_id AND is_current = TRUE";
@@ -33,7 +34,12 @@ public interface AddressRepo extends JpaRepository<Address, Long> {
     int updateAddressFromEmployeeId(@Param("addressLine") String addressLine,
                                     @Param("city") String city,
                                     @Param("state") String state,
-                                    @Param("country") String country,
+                                    @Param("country") Country country,
                                     @Param("zipCode") String zipCode,
                                     @Param("employee_id") Long employeeId);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Address a SET a.isCurrent = false WHERE a.employee.id = :employeeId AND a.isCurrent = true")
+    void unsetPreviousCurrentAddress(@Param("employeeId") Long employeeId);
 }
