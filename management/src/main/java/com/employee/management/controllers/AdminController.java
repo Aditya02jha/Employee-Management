@@ -28,4 +28,10 @@ public class AdminController {
         CreateEmployeeResponseDto createEmployeeResponseDto = adminService.createEmployee(createEmployeeRequestDto);
         return ResponseEntity.ok(createEmployeeResponseDto);
     }
+    //translator request. -- > translates api req -->create dto -->
+    //crete emp req  to --> create emp dto
+//    response dto <-- (to) crete emp dto
+
+    //use mapper instead of set.
+
 }
