@@ -11,8 +11,8 @@ public class ScheduledTasks {
     @Autowired
     private ScheduleService demoService;
 
-    @Scheduled(cron = "*/5 * * * * *") // Cron expression for running every minute
+    @Scheduled(cron = "0 0 0 * * *") // Cron expression for running every minute
     public void execute() {
-        demoService.dummyMethod();
+        demoService.birthdayWishMail();
     }
 }

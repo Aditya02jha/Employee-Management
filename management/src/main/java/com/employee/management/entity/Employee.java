@@ -8,6 +8,7 @@ import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,7 @@ public class Employee implements Serializable {
 
     private String name;
     private String email;
+    @Temporal(TemporalType.DATE)
     private Date date_of_birth;
 
     @ManyToOne
