@@ -1,6 +1,8 @@
 # 🏢 Employee Management System
 
 A full-stack **Employee Management System** built with **Spring Boot (Backend)** and **React (Frontend)**. This project allows users to **manage employees**, add addresses, assign managers, and filter employees by **country & department**.
+![image](https://github.com/user-attachments/assets/1d3c1971-b092-496b-bf05-590e38978ff0)
+
 
 ---
 
