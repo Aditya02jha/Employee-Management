@@ -121,6 +121,3 @@ Frontend will start at: **`http://localhost:5173`** 🎡
 
 ---
 
-### 🎉 This README is complete & professional! 🚀🔥  
-Let me know if you need any changes! 😎
-
