@@ -116,7 +116,7 @@ Frontend will start at: **`http://localhost:5173`** 🎡
 
 ## 📈 Contact
 
-📧 **Email:** your.email@example.com  
+📧 **Email:** aditya0000jha@gmail.com  
 🔗 **GitHub:** [YourGitHub](https://github.com/YOUR_GITHUB_USERNAME)  
 
 ---
