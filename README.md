@@ -43,7 +43,7 @@ A full-stack **Employee Management System** built with **Spring Boot (Backend)**
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/YOUR_GITHUB_USERNAME/Employee-Management.git
+git clone https://github.com/Aditya02jha/Employee-Management.git
 cd Employee-Management
 ```
 
@@ -121,7 +121,7 @@ Frontend will start at: **`http://localhost:5173`** 🎡
 ## 📈 Contact
 
 📧 **Email:** aditya0000jha@gmail.com  
-🔗 **GitHub:** [YourGitHub](https://github.com/YOUR_GITHUB_USERNAME)  
+🔗 **GitHub:** [YourGitHub](https://github.com/Aditya02jha)  
 
 ---
 
